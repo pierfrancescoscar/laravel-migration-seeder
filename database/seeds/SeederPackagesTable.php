@@ -13,9 +13,16 @@ class SeederPackagesTable extends Seeder
      */
     public function run(Faker $faker)
     {
-       $packages = new Package();
-       @for ($i = 0; $i < 50; $i++) {
-           $packages->
+       for ($i = 0; $i < 50; $i++) {
+
+        $packages = new Package();
+
+           $packages->destination = $faker->text(50);
+           $packages->price = $faker->randomNumber(4, true);
+           $packages->number_of_days = $faker->randomNumber(2, true);
+           $packages->description = $faker->word();
+
+           $packages->save();
        }
     }
 }
